@@ -1,0 +1,31 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="myPersistenceUnit">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<!-- Định cấu hình đối tượng quản lý thực thể JPA -->
+		<class>chuyende.model.User</class>
+		<!-- Thay thế javaweb.model.Product bằng tên package và class của bạn -->
+
+		<!-- Định cấu hình đơn vị giao dịch -->
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="org.springframework.jdbc.datasource.DriverManagerDataSource" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/dacn_web" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- Cấu hình hiển thị SQL trong quá trình debug (không bắt buộc) -->
+			<property name="hibernate.show_sql" value="true" />
+			<!-- Cấu hình để Hibernate tự động tạo bảng nếu chưa tồn tại (không bắt 
+				buộc) -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- Cấu hình loại cơ sở dữ liệu MySQL -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5Dialect" />
+		</properties>
+	</persistence-unit>
+</persistence>
